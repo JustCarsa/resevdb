@@ -7,10 +7,16 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    // Menampilkan profil pengguna
+    public function index()
+    {
+        $users = User::all();
+        return view('users.index', compact('users'));
+    }
+
     public function show($id)
     {
         $user = User::findOrFail($id);
         return view('users.show', compact('user'));
     }
+
 }
